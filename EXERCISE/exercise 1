@@ -1,0 +1,256 @@
+SQL Exercise 1
+1),4)
+D3_80302_Rishikesh>select * from SEMP;
++-------+---------+-------+--------+----------+
+| EMPNO | EMPNAME | BASIC | DEPTNO | DEPTHEAD |
++-------+---------+-------+--------+----------+
+| 0001  | SUNIL   |  6000 | 10     | NULL     |
+| 0002  | HIREN   |  8000 | 20     | NULL     |
+| 0003  | ALI     |  4000 | 10     | 0001     |
+| 0004  | GEORGE  |  6000 | NULL   | 0002     |
++-------+---------+-------+--------+----------+
+4 rows in set (0.00 sec)
+
+2),3)
+D3_80302_Rishikesh>select * from SDEPT;
++--------+-------------+
+| DEPTNO | DEPTNAME    |
++--------+-------------+
+| 10     | Development |
+| 20     | Training    |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+**************************************
+D3_80302_Rishikesh>select * from sp;
++------+------+------+------+
+| S#   | P#   | J#   | QTY  |
++------+------+------+------+
+| S1   | P1   | J1   |  200 |
+| S1   | P1   | J4   |  700 |
+| S2   | P3   | J1   |  400 |
+| S2   | P3   | J3   |  200 |
+| S2   | P3   | J4   |  500 |
+| S2   | P3   | J5   |  600 |
+| S2   | P3   | J6   |  400 |
+| S2   | P3   | J7   |  800 |
+| S2   | P5   | J2   |  100 |
+| S3   | P3   | J1   |  200 |
+| S3   | P4   | J2   |  500 |
+| S4   | P6   | J3   |  300 |
+| S4   | P6   | J7   |  300 |
+| S5   | P2   | J2   |  200 |
+| S5   | P2   | J4   |  100 |
+| S5   | P5   | J5   |  500 |
+| S5   | P5   | J7   |  100 |
+| S5   | P6   | J2   |  200 |
+| S5   | P1   | J4   |  100 |
+| S5   | P3   | J4   |  200 |
+| S5   | P4   | J4   |  800 |
+| S5   | P5   | J4   |  400 |
+| S5   | P6   | J4   |  500 |
++------+------+------+------+
+23 rows in set (0.00 sec)
+
+5. Display all the data from the S table.
+D3_80302_Rishikesh>select * from S;
++------+-------+--------+--------+
+| S#   | Sname | Status | City   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clerk |     20 | London |
+| S5   | Admas |     30 | Athens |
++------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+6. Display only the S# and SNAME fields from the
+S table.
+
+D3_80302_Rishikesh>select `S#`,Sname from S;
++------+-------+
+| S#   | Sname |
++------+-------+
+| S1   | Smith |
+| S2   | Jones |
+| S3   | Blake |
+| S4   | Clerk |
+| S5   | Admas |
++------+-------+
+5 rows in set (0.01 sec)
+
+7. Display the PNAME and COLOR from the P table
+for the CITY=”London”.
+
+D3_80302_Rishikesh>select Pname,Color,City from P where City='London';
++-------+-------+--------+
+| Pname | Color | City   |
++-------+-------+--------+
+| Nut   | Red   | London |
+| Screw | Red   | London |
+| Cog   | Red   | London |
++-------+-------+--------+
+3 rows in set (0.00 sec)
+
+
+8. Display all the Suppliers from London.
+
+D3_80302_Rishikesh>select * from S where City='London';
++------+-------+--------+--------+
+| S#   | Sname | Status | City   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S4   | Clerk |     20 | London |
++------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+9. Display all the Suppliers from Paris or Athens.
+
+D3_80302_Rishikesh>select * from S where City='Paris' or City='Athens' ;
++------+-------+--------+--------+
+| S#   | Sname | Status | City   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S5   | Admas |     30 | Athens |
++------+-------+--------+--------+
+3 rows in set (0.00 sec)
+
+10. Display all the Projects in Athens.
+
+D3_80302_Rishikesh>select * from J where City='Athens';
++------+---------+--------+
+| J#   | Jname   | City   |
++------+---------+--------+
+| J3   | Reader  | Athens |
+| J4   | Console | Athens |
++------+---------+--------+
+2 rows in set (0.00 sec)
+
+11. Display all the Partnames with the
+between 12 and 14 (inclusive of both).
+
+D3_80302_Rishikesh>select Pname,Weight from P where Weight between 12 and 14;
++-------+--------+
+| Pname | Weight |
++-------+--------+
+| Nut   |     12 |
+| Screw |     14 |
+| Cam   |     12 |
++-------+--------+
+3 rows in set (0.00 sec)
+
+12. Display all the Suppliers with a Status greater
+than or equal to 20.
+
+D3_80302_Rishikesh>select * from S where Status>=20;
++------+-------+--------+--------+
+| S#   | Sname | Status | City   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clerk |     20 | London |
+| S5   | Admas |     30 | Athens |
++------+-------+--------+--------+
+4 rows in set (0.00 sec)
+
+13. Display all the Suppliers except the Suppliers
+from London.
+
+D3_80302_Rishikesh>select * from S where City != 'London';
++------+-------+--------+--------+
+| S#   | Sname | Status | City   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S5   | Admas |     30 | Athens |
++------+-------+--------+--------+
+3 rows in set (0.00 sec)
+
+14. Display only the Cities from where the
+Suppliers come from.
+
+D3_80302_Rishikesh>select City from S;
++--------+
+| City   |
++--------+
+| London |
+| Paris  |
+| Paris  |
+| London |
+| Athens |
++--------+
+5 rows in set (0.00 sec)
+
+15. Assuming that the Part Weight is in GRAMS,
+display the same in MILLIGRAMS and KILOGRAMS.
+
+D3_80302_Rishikesh>select `P#`,Weight, Weight/1000 "Wt in mg" , Weight*1000 "wt in
+kg" from P ;
++------+--------+----------+----------+
+| P#   | Weight | Wt in mg | wt in kg |
++------+--------+----------+----------+
+| P1   |     12 |   0.0120 |    12000 |
+| P2   |     17 |   0.0170 |    17000 |
+| P3   |     17 |   0.0170 |    17000 |
+| P4   |     14 |   0.0140 |    14000 |
+| P5   |     12 |   0.0120 |    12000 |
+| P6   |     19 |   0.0190 |    19000 |
++------+--------+----------+----------+
+6 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

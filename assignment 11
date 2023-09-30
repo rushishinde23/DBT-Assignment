@@ -1,0 +1,44 @@
+SQL Assignment – 11
+Subqueries
+1) Write a query that uses a subquery to obtain
+all orders for the customer named Cisneros. Assume
+you do not know his customer number (cnum).
+
+D3_80302_Rishikesh>select * from ORDERS 
+    -> where Cnum=
+    -> (select Cnum from CUSTOMERS where Cname='Cisneros');
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+2 rows in set (0.00 sec)
+                                                                                                                                                                          
+
+2) Write a query that produces the names and
+ratings of all customers who have above-average
+orders.
+
+D3_80302_Rishikesh>select Cname,Rating from CUSTOMERS,ORDERS where CUSTOMERS.Cnum=ORDERS.Cnum and Amt > (select avg(Amt)  from ORDERS )group by Cname,Rating;
++---------+--------+
+| Cname   | Rating |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.07 sec)
+
+
+3) Write a query that selects the total amount in
+orders for each salesperson for whom this total
+is greater than the amount of the largest order
+in the table.
+
+D3_80302_Rishikesh>select Sname, sum(Amt) from SALESPEOPLE,ORDERS where SALESPEOPLE.Snum=ORDERS.Snum group by Sname having sum(Amt)>(select max(Amt) from ORDERS);
++-------+----------+
+| Sname | sum(Amt) |
++-------+----------+
+| Peel  | 15382.07 |
++-------+----------+
+1 row in set (0.00 sec)

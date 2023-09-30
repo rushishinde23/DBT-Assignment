@@ -1,0 +1,153 @@
+SQL Exercise 3
+1. Display all the Supplier names with the initial
+letter capital.
+
+D3_80302_Rishikesh>select concat(upper(Substr(Sname,1,1)),lower(substr(Sname,2))) from S;
++---------------------------------------------------------+
+| concat(upper(Substr(Sname,1,1)),lower(substr(Sname,2))) |
++---------------------------------------------------------+
+| Smith                                                   |
+| Jones                                                   |
+| Blake                                                   |
+| Clerk                                                   |
+| Admas                                                   |
++---------------------------------------------------------+
+5 rows in set (0.00 sec)
+
+2. Display all the Supplier names in upper case.
+
+D3_80302_Rishikesh>select  upper(Sname) from S;
++--------------+
+| upper(Sname) |
++--------------+
+| SMITH        |
+| JONES        |
+| BLAKE        |
+| CLERK        |
+| ADMAS        |
++--------------+
+5 rows in set (0.00 sec)
+
+
+3. Display all the Supplier names in lower case.
+
+D3_80302_Rishikesh>select  lower(Sname) from S;
++--------------+
+| lower(Sname) |
++--------------+
+| smith        |
+| jones        |
+| blake        |
+| clerk        |
+| admas        |
++--------------+
+5 rows in set (0.00 sec)
+
+
+
+4. Display all the Supplier names padded to 25
+characters, with spaces on the left.
+
+D3_80302_Rishikesh>select lpad(Sname,25,' ') from S;
++---------------------------+
+| lpad(Sname,25,' ')        |
++---------------------------+
+|                     Smith |
+|                     Jones |
+|                     Blake |
+|                     Clerk |
+|                     Admas |
++---------------------------+
+5 rows in set (0.00 sec)
+
+
+5. Display all the Supplier names (with‘la’ replaced by ‘ro’).
+HINT: REPLACE.
+
+D3_80302_Rishikesh>select replace(Sname,'la','ro') from S;
++--------------------------+
+| replace(Sname,'la','ro') |
++--------------------------+
+| Smith                    |
+| Jones                    |
+| Broke                    |
+| Clerk                    |
+| Admas                    |
++--------------------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+6. Implement the above command such that ‘l’ is
+replaced with ‘r’ and ‘a’ is replaced with ‘o’.
+
+D3_80302_Rishikesh>select replace(replace(Sname,'l','r'),'a','o') from S;
++-----------------------------------------+
+| replace(replace(Sname,'l','r'),'a','o') |
++-----------------------------------------+
+| Smith                                   |
+| Jones                                   |
+| Broke                                   |
+| Crerk                                   |
+| Admos                                   |
++-----------------------------------------+
+5 rows in set (0.00 sec)
+
+
+
+7. Display the Supplier names and the lengths of
+the names.
+
+D3_80302_Rishikesh>select Sname,length(Sname) from S;
++-------+---------------+
+| Sname | length(Sname) |
++-------+---------------+
+| Smith |             5 |
+| Jones |             5 |
+| Blake |             5 |
+| Clerk |             5 |
+| Admas |             5 |
++-------+---------------+
+5 rows in set (0.00 sec)
+
+8. Use the soundex function to search 
+supplier by the name of ‘BLOKE’.
+
+D3_80302_Rishikesh>select * from S where soundex(Sname)=soundex('Bloke');
++------+-------+--------+-------+
+| S#   | Sname | Status | City  |
++------+-------+--------+-------+
+| S3   | Blake |     30 | Paris |
++------+-------+--------+-------+
+1 row in set (0.00 sec)
+
+
+9. Display the Supplier name and the status (as
+Ten, Twenty, Thirty, etc.).
+
+D3_80302_Rishikesh>select Sname, replace(replace(replace(Status,30,'Thirty'),20,'Twenty'),10,'Ten') Status from S;
++-------+--------+
+| Sname | Status |
++-------+--------+
+| Smith | Twenty |
+| Jones | Ten    |
+| Blake | Thirty |
+| Clerk | Twenty |
+| Admas | Thirty |
++-------+--------+
+5 rows in set (0.00 sec)
+
+
+10. Display the current day (e.g. Thursday).
+
+D3_80302_Rishikesh>select dayname(sysdate()) from dual;
++--------------------+
+| dayname(sysdate()) |
++--------------------+
+| Monday             |
++--------------------+
+1 row in set (0.00 sec)
+
